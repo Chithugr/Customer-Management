@@ -23,7 +23,7 @@
 
   <div class = "row">
     <div class = "col-lg-3">
-      <a th:href = "@{/customer/new}" class = "btn btn-primary btn-sm mb-3"> Add Customer</a>
+      <a th:href = "@{/customers/new}" class = "btn btn-primary btn-sm mb-3"> Add Customer</a>
     </div>
   </div>
   <table class = "table table-striped table-bordered">
@@ -43,20 +43,20 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="e : ${Cust}">
-      <th th:text="${c.id}">1</th>
-      <td th:text="${c.firstname}"></td>
-      <td th:text="${c.lastname}"></td>
-      <td th:text="${c.street}"></td>
-      <td th:text="${c.address}"></td>
-      <td th:text="${c.city}"></td>
-      <td th:text="${c.state}"></td>
-      <td th:text="${c.email}"></td>
-      <td th:text="${c.phno}"></td>
+    <tr th:each="customer : ${customer}">
+      <th th:text="${customer.id}">1</th>
+      <td th:text="${customer.firstname}"></td>
+      <td th:text="${customer.lastname}"></td>
+      <td th:text="${customer.street}"></td>
+      <td th:text="${customer.address}"></td>
+      <td th:text="${customer.city}"></td>
+      <td th:text="${customer.state}"></td>
+      <td th:text="${customer.email}"></td>
+      <td th:text="${customer.phno}"></td>
       <td><a class="btn btn-sm btn-primary"
-             th:href="@{/edit/{id}(id=${c.id})}">Edit</a> <a
+             th:href="@{/edit/{id}(id=${customer.id})}">Edit</a> <a
               class="btn btn-sm btn-danger"
-              th:href="@{/delete/{id}(id=${c.id})}">Delete</a></td>
+              th:href="@{/delete/{id}(id=${customer.id})}">Delete</a></td>
     </tr>
     </tbody>
 

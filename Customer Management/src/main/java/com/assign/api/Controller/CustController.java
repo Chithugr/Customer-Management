@@ -4,49 +4,77 @@ import com.assign.api.Service.CustService;
 import com.assign.api.entity.Customer;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+@Controller
 public class CustController {
-    @Autowired
-    private CustService service;
 
-    @GetMapping("/addcust")
-    public String addCustForm() {
+    private CustService custService;
+    public CustController(CustService custService){
+        super();
+        this.custService=custService;
+    }
+
+    // handler method to handle list students and return mode and view
+    @GetMapping("/customers")
+    public String listStudents(Model model) {
+        model.addAttribute("customer", custService.getAllCustomers());
         return "customer";
     }
 
-    @PostMapping("/register")
-    public String custRegister(@ModelAttribute Customer c, HttpSession session) {
-        service.addCust(c);
-        session.setAttribute("msg", "Customer Added Sucessfully..");
-        return "redirect:/";
+    @GetMapping("/customers/new")
+    public String createCustomerForm(Model model) {
+        // create customer object to hold student form data
+        Customer customer = new Customer();
+        model.addAttribute("customer", customer);
+        return "addcust";
+
     }
 
-    @GetMapping("/edit/{id}")
-    public String editcust(@PathVariable int id, Model m) {
-        Customer c = service.getCustById(id);
-        m.addAttribute("emp", c);
+    @PostMapping("/customers")
+    public String saveCustomer(@ModelAttribute("customer") Customer customer) {
+        custService.saveCustomer(customer);
+        return "redirect:/customer";
+    }
+
+    @GetMapping("/customers/edit/{id}")
+    public String editCustomerForm(@PathVariable Long id, Model model) {
+        model.addAttribute("customert", custService.getCustomerById(id));
         return "editcust";
     }
 
-    @PostMapping("/update")
-    public String updateCust(@ModelAttribute Customer c, HttpSession session) {
-        service.addCust(c);
-        session.setAttribute("msg", "Emp Data Update Sucessfully..");
-        return "redirect:/";
+    @PostMapping("/customers/{id}")
+    public String updateCustomer(@PathVariable Long id,
+                                @ModelAttribute("customer") Customer customer,
+                                Model model) {
+
+        // get customer from database by id
+        Customer existingCustomer = custService.getCustomerById(id);
+        existingCustomer.setId(id);
+        existingCustomer.setFirst_name(customer.getFirst_name());
+        existingCustomer.setLast_name(customer.getLast_name());
+        existingCustomer.setStreet(customer.getStreet());
+        existingCustomer.setAddress(customer.getAddress());
+        existingCustomer.setCity(customer.getCity());
+        existingCustomer.setState(customer.getState());
+        existingCustomer.setEmail(customer.getEmail());
+        existingCustomer.setPhno(customer.getPhno());
+
+        // save updated customer object
+        custService.updateCustomer(existingCustomer);
+        return "redirect:/customer";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteEMp(@PathVariable int id, HttpSession session) {
+    // handler method to handle delete student request
 
-        service.deleteCust(id);
-        session.setAttribute("msg", "Emp Data Delete Sucessfully..");
-        return "redirect:/";
+    @GetMapping("/students/{id}")
+    public String deleteCustomer(@PathVariable Long id) {
+        custService.deletecustById(id);
+        return "redirect:/customer";
     }
 
 
