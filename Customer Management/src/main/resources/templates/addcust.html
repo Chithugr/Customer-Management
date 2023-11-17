@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Student Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+</nav>
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div>
+            <h1 class = "text-center"> Customer Details </h1>
+            <div class = "card-body">
+                <form th:action="@{/customer}" th:object = "${customer}" method="POST">
+                    <div class ="form-group">
+                        <input
+                                type = "text"
+                                name = "firstName"
+                                th:field = "*{firstName}"
+                                class = "form-control"
+                                placeholder="First Name"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <input
+                                type = "text"
+                                name = "lastName"
+                                th:field = "*{lastName}"
+                                class = "form-control"
+                                placeholder="Last Name"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <input
+                                type = "text"
+                                name = "street"
+                                th:field = "*{street}"
+                                class = "form-control"
+                                placeholder="Street"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <input
+                                type = "text"
+                                name = "address"
+                                th:field = "*{address}"
+                                class = "form-control"
+                                placeholder="Address"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <input
+                                type = "text"
+                                name = "city"
+                                th:field = "*{city}"
+                                class = "form-control"
+                                placeholder="City"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <input
+                                type = "text"
+                                name = "state"
+                                th:field = "*{state}"
+                                class = "form-control"
+                                placeholder="State"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <input
+                                type = "text"
+                                name = "email"
+                                th:field = "*{email}"
+                                class = "form-control"
+                                placeholder="Email"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <input
+                                type = "int"
+                                name = "phone"
+                                th:field = "*{phone}"
+                                class = "form-control"
+                                placeholder="Phone"
+                        />
+                    </div>
+
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
