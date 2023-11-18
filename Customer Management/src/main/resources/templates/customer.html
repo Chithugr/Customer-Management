@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="ISO-8859-1">
-  <title>Student Management System</title>
+  <title>Customer Management System</title>
   <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -45,8 +45,8 @@
     <tbody>
     <tr th:each="customer : ${customer}">
       <th th:text="${customer.id}">1</th>
-      <td th:text="${customer.firstname}"></td>
-      <td th:text="${customer.lastname}"></td>
+      <td th:text="${customer.first_name}"></td>
+      <td th:text="${customer.last_name}"></td>
       <td th:text="${customer.street}"></td>
       <td th:text="${customer.address}"></td>
       <td th:text="${customer.city}"></td>

@@ -19,7 +19,7 @@ public class CustController {
         this.custService=custService;
     }
 
-    // handler method to handle list students and return mode and view
+    // handler method to handle list customers and return mode and view
     @GetMapping("/customers")
     public String listStudents(Model model) {
         model.addAttribute("customer", custService.getAllCustomers());
@@ -28,22 +28,22 @@ public class CustController {
 
     @GetMapping("/customers/new")
     public String createCustomerForm(Model model) {
-        // create customer object to hold student form data
+        // create customer object to hold customer form data
         Customer customer = new Customer();
         model.addAttribute("customer", customer);
-        return "addcust";
+        return "add_customer";
 
     }
 
     @PostMapping("/customers")
     public String saveCustomer(@ModelAttribute("customer") Customer customer) {
         custService.saveCustomer(customer);
-        return "redirect:/customer";
+        return "redirect:/customers";
     }
 
     @GetMapping("/customers/edit/{id}")
     public String editCustomerForm(@PathVariable Long id, Model model) {
-        model.addAttribute("customert", custService.getCustomerById(id));
+        model.addAttribute("customer", custService.getCustomerById(id));
         return "editcust";
     }
 
@@ -66,15 +66,15 @@ public class CustController {
 
         // save updated customer object
         custService.updateCustomer(existingCustomer);
-        return "redirect:/customer";
+        return "redirect:/customers";
     }
 
     // handler method to handle delete student request
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/customers/{id}")
     public String deleteCustomer(@PathVariable Long id) {
         custService.deletecustById(id);
-        return "redirect:/customer";
+        return "redirect:/customers";
     }
 
 
