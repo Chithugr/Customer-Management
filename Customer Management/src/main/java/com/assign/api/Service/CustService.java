@@ -13,5 +13,6 @@ public interface CustService {
 
     Customer updateCustomer(Customer customer);
 
-    void deletecustById(Long id);
+    void deleteCustomerById(Long id);
+
 }

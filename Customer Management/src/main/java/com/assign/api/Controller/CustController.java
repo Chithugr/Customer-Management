@@ -6,10 +6,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
 @Controller
 public class CustController {
 
@@ -21,7 +19,7 @@ public class CustController {
 
     // handler method to handle list customers and return mode and view
     @GetMapping("/customers")
-    public String listStudents(Model model) {
+    public String listCustomers(Model model) {
         model.addAttribute("customer", custService.getAllCustomers());
         return "customer";
     }
@@ -69,11 +67,11 @@ public class CustController {
         return "redirect:/customers";
     }
 
-    // handler method to handle delete student request
+    // handler method to handle delete customer request
 
     @GetMapping("/customers/{id}")
     public String deleteCustomer(@PathVariable Long id) {
-        custService.deletecustById(id);
+        custService.deleteCustomerById(id);
         return "redirect:/customers";
     }
 

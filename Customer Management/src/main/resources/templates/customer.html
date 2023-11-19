@@ -39,7 +39,6 @@
       <th scope="col">Email</th>
       <th scope="col">Phone No</th>
       <th scope="col">Action</th>
-
     </tr>
     </thead>
     <tbody>
@@ -53,10 +52,12 @@
       <td th:text="${customer.state}"></td>
       <td th:text="${customer.email}"></td>
       <td th:text="${customer.phno}"></td>
-      <td><a class="btn btn-sm btn-primary"
-             th:href="@{/edit/{id}(id=${customer.id})}">Edit</a> <a
-              class="btn btn-sm btn-danger"
-              th:href="@{/delete/{id}(id=${customer.id})}">Delete</a></td>
+      <td>
+        <a th:href="@{customers/edit/{id}(id=${customer.id})}"
+           class="btn btn-sm btn-primary">Edit</a>
+        <a th:href="@{/delete/{id}(id=${customer.id})}"
+           class="btn btn-sm btn-danger">Delete</a></td>
+
     </tr>
     </tbody>
 

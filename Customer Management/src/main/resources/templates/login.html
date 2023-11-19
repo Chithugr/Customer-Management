@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+.container {
+    width: 300px;
+    padding: 16px;
+    background-color: #ffffff;
+    margin: 100px auto;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+.container h1 {
+    text-align: center;
+    color: #444444;
+}
+
+.container label {
+    color: #8f8f8f;
+    font-size: 14px;
+}
+
+.container input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.container button {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.container button:hover {
+    opacity: 0.8;
+}</style>
+
 </head>
 <body>
+
 <div class="container">
     <h1>Login</h1>
     <form>
@@ -14,8 +58,24 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit">Login</button>
+        <button id="navigateButton" >submit</button>
     </form>
+
+    <script>
+        document.getElementById('navigateButton').addEventListener('click', function() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Check if both username and password are not empty
+            if (username.trim() !== '' && password.trim() !== '') {
+                window.location.href = '@{/customers}';
+            } else {
+                alert('Please enter both username and password.');
+            }
+
+        });
+
+    </script>
 </div>
 <script>
 </script>

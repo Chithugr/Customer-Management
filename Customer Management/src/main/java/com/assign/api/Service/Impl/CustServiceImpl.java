@@ -16,11 +16,10 @@ public class CustServiceImpl implements CustService {
         super();
         this.custrepo=custrepo;
     }
-
+    @Override
     public List<Customer> getAllCustomers() {
         return custrepo.findAll();
     }
-
 
     @Override
     public Customer saveCustomer(Customer customer) {
@@ -38,9 +37,10 @@ public class CustServiceImpl implements CustService {
     }
 
     @Override
-    public void deletecustById(Long id) {
+    public void deleteCustomerById(Long id) {
         custrepo.deleteById(String.valueOf(id));
-
     }
 
 }
+
+
