@@ -8,7 +8,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name", unique = true)
     private String first_name;
     @Column(name = "last_name")
     private String last_name;
@@ -36,7 +36,7 @@ public class Customer {
         this.state=state;
         this.email=email;
         this.phno=phno;
-    };
+    }
 
     public Customer() {
 
@@ -113,8 +113,5 @@ public class Customer {
     public void setPhno(String phno) {
         this.phno = phno;
     }
-
-
-
 
 }

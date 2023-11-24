@@ -9,6 +9,8 @@ public interface CustService {
 
     Customer saveCustomer(Customer customer);
 
+    boolean isDuplicateName(String firstName);
+
     Customer getCustomerById(Long id);
 
     Customer updateCustomer(Customer customer);
